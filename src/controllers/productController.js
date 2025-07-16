@@ -3,9 +3,11 @@ const Product = require("../model/product");
 // create product
 exports.createProduct = async (req, res) => {
   try {
+    const imagePath = req.file ? `/uploads/${req.file.filename}` : null;
     const product = new Product({
       ...req.body,
-      user: req.user._id
+      user: req.user._id,
+      image: imagePath
     });
     await product.save();
     res.status(201).json({ message: "Product created", product });

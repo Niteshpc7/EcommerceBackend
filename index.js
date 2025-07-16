@@ -13,6 +13,8 @@ app.use(express.json());
     methods: ['GET', 'POST','PUT','PATCH','DELETE'],
     credentials: true 
  }))
+ app.use('/uploads', express.static('uploads'));
+
 // Routes
 app.use("/api/auth", require("./src/routes/auth"));
 app.use("/api/auth", require("./src/routes/passwordRoutes"));
