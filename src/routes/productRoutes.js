@@ -14,5 +14,6 @@ router.delete("/remove/:id",verifyToken,deleteMyProduct);
 // product listening api
 // 
 router.get('/productListing', productListing);
-
+// product filter routes hai 
+router.get("/filter",productFilter);
 module.exports = router;

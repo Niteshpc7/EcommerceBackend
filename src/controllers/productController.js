@@ -81,3 +81,21 @@ exports.productListing = async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 };
+exports.productFilter = async (req, res) => {
+  try {
+    const { name, minPrice, maxPrice, category , brand} = req.query;
+    const filter = {};
+
+    if (name) filter.name = name;
+    if (brand) filter.brand = brand;
+    if (category) filter.category = category;
+    if (minPrice || maxPrice) filter.price = {};
+    if (minPrice) filter.price.$gte = parseFloat(minPrice);
+    if (maxPrice) filter.price.$lte = parseFloat(maxPrice);
+
+    const products = await Product.find(filter);
+    res.status(200).json({ products });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
