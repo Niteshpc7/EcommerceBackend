@@ -1,10 +1,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../model/user");
-
-
-
-
 // SIGNUP codes
 exports.signup = async (req, res) => {
   const { name, username, email, password, role } = req.body;
@@ -65,6 +61,7 @@ exports.login = async (req, res) => {
       user: {
         id: user._id,
         email: user.email,
+         role:user.role
       },
     });
   } catch (error) {
