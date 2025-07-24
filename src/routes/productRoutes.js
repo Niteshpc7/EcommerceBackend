@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {createProduct,getMyProducts,updateMyProduct,deleteMyProduct,productListing} = require("../controllers/productController");
+const {createProduct,getMyProducts,updateMyProduct,deleteMyProduct,productListing,productFilter} = require("../controllers/productController");
 const verifyToken = require('../middleware/protect')
 const checkRole = require('../middleware/checkRole');
 const upload = require('../middleware/upload');
